@@ -2,14 +2,27 @@ kind: pipeline
 name: Mac Test CI
 type: exec
 
-clone:
-  depth: 30
-
 platform:
   os: darwin
   arch: amd64
 
+clone:
+  depth: 30
+
+workspace:
+  path: /tmp/testingdrone/src
+
 steps:
+- name: Fetch Tags
+  commands:
+  - git config url."https://github.com/".insteadOf 'git@github.com:'
+  - git fetch --tags
+
+- name: Submodules
+  depends_on: [ clone ]
+  commands:
+  - git submodule update --init --recursive
+
 - name: greeting
   commands:
   - echo Ohaio sekai good morning worldoooOoooOoo!
