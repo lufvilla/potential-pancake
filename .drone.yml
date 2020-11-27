@@ -1,0 +1,14 @@
+kind: pipeline
+name: Mac Test CI
+type: exec
+
+clone:
+  depth: 30
+
+steps:
+- name: greeting
+  commands:
+  - echo Ohaio sekai good morning worldoooOoooOoo!
+
+node:
+  type: mac
