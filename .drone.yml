@@ -10,7 +10,8 @@ clone:
   depth: 30
 
 workspace:
-  path: /tmp/testingdrone/src
+  base: /mactest
+  path: testingdrone/sourcecode
 
 steps:
 - name: Fetch Tags
@@ -28,7 +29,7 @@ steps:
   - echo Ohaio sekai good morning worldoooOoooOoo!
 
 trigger:
-  ref:
+  ref: 
   - refs/heads/master
   - refs/tags/*
   - refs/pull/**
